@@ -9,6 +9,8 @@ export class TitlePipe implements PipeTransform {
     constructor() { }
 
     transform(title: string): string {
+        for(let i = 0; i < title.length; i++){
+        }
         return title;
     }
 
