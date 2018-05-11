@@ -1,0 +1,53 @@
+<diV class="jumbotron">
+    <form id="formGroup" [formGroup]="formGroup" novalidate (ngSubmit)="submitBook(formGroup.value)">
+
+        <fieldset>
+            <legend>{{formTitle}}</legend>
+            <div class="table-responsive">
+                <table>
+                    <tbody class="table">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>ISBN:</label>
+                                    <input type="number" class="form-control" formControlName="isbn" placeholder="Enter isbn" [(ngModel)]="book.isbn">
+                                    <div class="text-danger" *ngIf="error.isbn">{{ fieldAlert }}</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label>title:</label>
+                                    <input type="text" class="form-control" formControlName="title" placeholder="Enter title" [(ngModel)]="book.title">
+                                    <div class="text-danger" *ngIf="error.title">{{ fieldAlert }}</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Author:</label>
+                                    <input type="text" class="form-control" formControlName="author" placeholder="Enter author" autofocus="" [(ngModel)]="book.author">
+                                    <div class="text-danger" *ngIf="error.author">{{ fieldAlert }}</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label>Published:</label>
+                                    <input type="date" class="form-control" formControlName="published" [(ngModel)]="book.published">
+                                    <div class="text-danger" *ngIf="error.published">{{ fieldAlert }}</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn btn-primary" value="Save" />
+                                <input type="button" class="btn btn-secondary" value="Cancel" [routerLink]="['/home']" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </fieldset>
+    </form>
+</diV>

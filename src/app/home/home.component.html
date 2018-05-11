@@ -1,0 +1,43 @@
+<diV class="jumbotron">
+    <h1>Books list</h1>
+    <div>
+        <button type="button" class="btn btn-primary my-2" [routerLink]="['/details', '0']">Create book</button>
+    </div>
+    <div class="table-responsive">
+        <table class="mt-2 table table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Published</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of books">
+                    <!--*ngFor slice-->
+                    <td>{{row.title | titlePipe}}</td>
+                    <td>{{row.author}}</td>
+                    <td>{{row.published}}</td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" [routerLink]="['/details', row.isbn]">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-success" (click)="openModal(template, row)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</diV>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>You are about to delete the book: {{deleteBook.title}}.</p>
+        <p>Do you want to proceed?</p>
+        <button type="button" class="btn btn-primary" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline()">No</button>
+    </div>
+</ng-template>
