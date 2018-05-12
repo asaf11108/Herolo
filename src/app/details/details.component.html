@@ -34,7 +34,8 @@
                                 <div class="form-group">
                                     <label>Published:</label>
                                     <input type="date" class="form-control" formControlName="published" [(ngModel)]="book.published">
-                                    <div class="text-danger" *ngIf="error.published">{{ fieldAlert }}</div>
+                                    <div class="text-danger" *ngIf="error.published1">Field Requird</div>
+                                    <div class="text-danger" *ngIf="error.published2">Invalid Date</div>
                                 </div>
                             </td>
                         </tr>

@@ -53,12 +53,10 @@ export class DetailsComponent {
 
         function dateValidator(control: FormControl) {
             let date = control.value;
-            let flag = moment().isAfter(date);
-            if (!flag) {
+            let err = moment().isBefore(date);
+            if (err) {
                 return {
-                    dateCheck: {
-                        nowAfterDate: flag
-                    }
+                    dateErr: err
                 }
             }
             return null;
@@ -83,7 +81,9 @@ export class DetailsComponent {
             this.error.isbn = !this.formGroup.controls['isbn'].valid;
         this.error.title = !this.formGroup.controls['title'].valid;
         this.error.author = !this.formGroup.controls['author'].valid;
-        this.error.published = !this.formGroup.controls['published'].valid;
+        this.error.published1 = this.formGroup.controls['published'].errors != null && this.formGroup.controls['published'].errors.required != undefined;
+        this.error.published2 = this.formGroup.controls['published'].errors != null && this.formGroup.controls['published'].errors.dateErr != undefined;
+        console.log(this.formGroup.controls['published'].errors);
         return !this.formGroup.valid;
     }
 }
@@ -93,6 +93,7 @@ class IError {
         public isbn: boolean = false,
         public title: boolean = false,
         public author: boolean = false,
-        public published: boolean = false,
+        public published1: boolean = false,
+        public published2: boolean = false,
     ) { }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'details/:code', component: DetailsComponent },
   { path: '404', component: PageNotFound },
-  { path: '**', redirectTo: '/404' }
+  { path: '**', redirectTo: '/home' } //home
 ];
 
 @NgModule({

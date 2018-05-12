@@ -21,10 +21,10 @@
                     <td>{{row.published}}</td>
                     <td>
                         <button type="button" class="btn btn-secondary" [routerLink]="['/details', row.isbn]">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <img src="assets/edit.svg"/>
                         </button>
                         <button type="button" class="btn btn-success" (click)="openModal(template, row)">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            <img src="assets/garbage.svg"/>
                         </button>
                     </td>
                 </tr>
