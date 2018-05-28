@@ -33,8 +33,10 @@ export class BooksService {
     }
 
     updateBook(book: Book) {
-        this.books = this.books.filter((b: Book) => b.isbn !== book.isbn);
-        this.books.push(book);
+        this.books.forEach((item, index) => {
+            if(item.isbn == book.isbn)
+                this.books[index] = book;
+        })
         this.booksSource.next(this.books);
     }
 
